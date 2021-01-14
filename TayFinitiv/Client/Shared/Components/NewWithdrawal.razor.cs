@@ -20,6 +20,7 @@ namespace TayFinitiv.Client.Shared.Components
 		{
 			await base.OnInitializedAsync();
 			newRequest = new WithdrawRequest();
+			newRequest.DenominationRequested = Denomination.One;
 			awaitingResponse = false;
 		}
 
@@ -46,6 +47,7 @@ namespace TayFinitiv.Client.Shared.Components
 		{
 			requestResponse = null;
 			newRequest = new WithdrawRequest();
+			newRequest.DenominationRequested = Denomination.One; // Default to One
 			awaitingResponse = false;
 		}
 	}
