@@ -27,6 +27,7 @@ namespace TayFinitiv.Shared
 		}
 
 		public string Id { get; set; }
+		public string Name { get; set; }
 		public int Ones { get; set; }
 		public int Fives { get; set; }
 		public int Tens { get; set; }

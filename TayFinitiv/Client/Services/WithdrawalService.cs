@@ -26,19 +26,6 @@ namespace TayFinitiv.Client.Services
 			return withdrawRequestResp;
 		}
 
-		public async Task<Dictionary<Denomination, int>> FactoryReset()
-		{
-			HttpResponseMessage response = await _client.PostAsync(API_PREFIX + "reset", null);
-			response.EnsureSuccessStatusCode();
-			return await response.Content.ReadFromJsonAsync<Dictionary<Denomination, int>>();
-		}
-
-		public async Task<Dictionary<Denomination, int>> Restock(RestockRequest billsToRestock)
-		{
-			HttpResponseMessage response = await _client.PostAsJsonAsync(API_PREFIX + "restock", billsToRestock);
-			response.EnsureSuccessStatusCode();
-			return await response.Content.ReadFromJsonAsync<Dictionary<Denomination, int>>();
-		}
 
 		public async Task<Dictionary<Denomination, int>> GetOverview()
 		{

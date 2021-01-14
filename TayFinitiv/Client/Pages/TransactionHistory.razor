@@ -1,12 +1,22 @@
-﻿@page "/requests"  
+﻿@page "/requests"
 <h3>Request History</h3>
-<ResetButton OnFactoryReset="OnFactoryReset"></ResetButton>
-@if(_requests !=null)
+@if (awaitingResponse)
 {
+	<Loading />
+}
+@if (_requests != null)
+{
+	<ResetButton OnFactoryReset="OnFactoryReset"></ResetButton>
+
 	<RecordList Context="request" Items="@_requests" FormatAsList="true">
 		<RowTemplate>
 			<RequestRowDetail Request="request"></RequestRowDetail>
 		</RowTemplate>
 	</RecordList>
+
+	if(_requests.Count==0)
+	{
+		<div class="text-muted font-italic">There are no withdrawal requests</div>
+	}
 }
 

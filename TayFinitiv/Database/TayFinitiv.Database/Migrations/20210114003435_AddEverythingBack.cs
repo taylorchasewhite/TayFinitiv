@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TayFinitiv.Database.Migrations
 {
-    public partial class AddATMData : Migration
+    public partial class AddEverythingBack : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,6 +23,25 @@ namespace TayFinitiv.Database.Migrations
                 {
                     table.PrimaryKey("PK_ATMs", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Requests",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RequestInstant = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    DenominationRequested = table.Column<int>(type: "int", nullable: false),
+                    AmountRequested = table.Column<int>(type: "int", nullable: false),
+                    WasSuccessful = table.Column<bool>(type: "bit", nullable: false),
+                    MessageToUser = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Requests", x => x.Id);
+                });
+
+            migrationBuilder.Sql("Insert into ATMs (Id, Ones,Fives,Tens,Twenties,Fifties,Hundreds) VALUES ('1',10,10,10,10,10,10)");
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -30,6 +49,8 @@ namespace TayFinitiv.Database.Migrations
             migrationBuilder.DropTable(
                 name: "ATMs");
 
+            migrationBuilder.DropTable(
+                name: "Requests");
         }
     }
 }

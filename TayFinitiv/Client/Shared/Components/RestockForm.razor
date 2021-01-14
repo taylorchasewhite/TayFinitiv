@@ -1,6 +1,6 @@
 ﻿@if (_billsToRestock != null)
 {
-	
+
 	<EditForm style="max-width: 50rem;" OnValidSubmit="OnSave" Model="_billsToRestock">
 		<div class="form-body">
 			<DataAnnotationsValidator />
@@ -25,8 +25,12 @@
 		</div>
 	</EditForm>
 }
-
-@if(_billsNowInATM!=null)
+@if (awaitingResponse)
 {
-	<Overview Bills="_billsNowInATM"/>
+	<Loading />
+}
+
+@if (_billsNowInATM != null)
+{
+	<Overview Bills="_billsNowInATM" />
 }

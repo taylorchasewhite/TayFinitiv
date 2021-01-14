@@ -13,7 +13,7 @@ namespace TayFinitiv.Client.Pages
 		private IList<WithdrawRequest> _requests;
 		[Inject]
 		private HistoryService _histService { get; set;  }
-
+		private bool awaitingResponse;
 		protected override async Task OnInitializedAsync()
 		{
 
@@ -28,8 +28,10 @@ namespace TayFinitiv.Client.Pages
 
 		private async Task getRequests()
 		{
+			awaitingResponse = true;
 			_requests = await _histService.GetRequestHistory();
 			_requests = _requests.OrderByDescending(req => req.RequestInstant).ToList();
+			awaitingResponse = false;
 			StateHasChanged();
 		}
 	}

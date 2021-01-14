@@ -24,6 +24,7 @@ namespace TayFinitiv.Client
 			builder.Services.AddScoped<HistoryService>();
 			builder.Services.AddScoped<WithdrawalService>();
 			builder.Services.AddScoped<UserService>();
+			builder.Services.AddScoped<RestockService>();
 			builder.Services.AddScoped<PageHistoryState>();
 			await builder.Build().RunAsync();
 		}

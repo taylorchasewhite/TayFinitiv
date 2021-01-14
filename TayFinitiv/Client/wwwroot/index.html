@@ -12,11 +12,20 @@
     <link href="TayFinitiv.Client.styles.css" rel="stylesheet" />
     <link href="manifest.json" rel="manifest" />
     <link rel="shortcut icon" type="image/jpg" href="/images/refinitiv-r.jpg" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+          integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
 </head>
 
 <body>
-    <div id="app">Loading...</div>
+    <div id="app">
+        <div class="og-page-loading-container full-page px-5">
+            <div class="og-badge-with-border-all-sizes">
+                <i title="Loading..." class="far fa-compass og-loading-subtle og-color-primary"></i>
+            </div>
+            <h1 style="" class="ml-1">TayFinitiv</h1>
+        </div>
+    </div>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.

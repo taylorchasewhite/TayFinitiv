@@ -44,18 +44,6 @@ namespace TayFinitiv.Server.Controllers
             return Ok(_tellerService.GetOverview());
         }
 
-        // POST: api/requests/reset
-        /// <summary>
-        /// Reset the ATM such that there are 10 bills of each denomination in the ATM and the withdraw
-        /// history is erased clean.
-        /// </summary>
-        /// <returns>IEnumerable collection of withdraw requests</returns>
-        [HttpPost("reset")]
-        public async Task<ActionResult<Dictionary<Denomination, int>>> PostReset()
-        {
-            return Ok(_tellerService.FactoryReset());
-        }
-
         // POST: api/requests/restock
         /// <summary>
         /// Restock the bills in the ATM
@@ -68,6 +56,11 @@ namespace TayFinitiv.Server.Controllers
         }
 
         // GET: api/requests/5
+        /// <summary>
+        /// Get a specific request based on its globally unique identifier
+        /// </summary>
+        /// <param name="id">The unique string identifier</param>
+        /// <returns>The deserialized WithdrawRequest object.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<WithdrawRequest>> GetWithdrawRequest(string id)
         {
@@ -83,6 +76,12 @@ namespace TayFinitiv.Server.Controllers
 
         // POST: api/requests
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Saves a new WithdrawRequest object to the database. If successful, the request will also decrement the remaining
+        /// number of bills in the ATM.
+        /// </summary>
+        /// <param name="withdrawRequest">The serialized WithdrawRequest object</param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<WithdrawRequest>> PostWithdrawRequest(WithdrawRequest withdrawRequest)
         {
@@ -106,20 +105,16 @@ namespace TayFinitiv.Server.Controllers
             return CreatedAtAction("GetWithdrawRequest", new { id = withdrawRequest.Id }, withdrawRequest);
         }
 
-        // DELETE: api/requests/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteWithdrawRequest(string id)
+        // DELETE: api/requests/reset
+        /// <summary>
+        /// Reset the ATM such that there are 10 bills of each denomination in the ATM and the withdraw
+        /// history is erased clean.
+        /// </summary>
+        /// <returns>IEnumerable collection of withdraw requests</returns>
+        [HttpDelete("reset")]
+        public async Task<ActionResult<Dictionary<Denomination, int>>> PostReset()
         {
-            var withdrawRequest = await _context.Requests.FindAsync(id);
-            if (withdrawRequest == null)
-            {
-                return NotFound();
-            }
-
-            _context.Requests.Remove(withdrawRequest);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return Ok(_tellerService.FactoryReset());
         }
 
         private bool WithdrawRequestExists(string id)

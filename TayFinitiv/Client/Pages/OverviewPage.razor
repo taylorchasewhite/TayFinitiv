@@ -2,4 +2,11 @@
 @inherits BasePageComponent
 <h3>ATM Overview</h3>
 <ResetButton OnFactoryReset="OnFactoryReset"></ResetButton>
-<Overview Bills="_bills"></Overview>
+@if (awaitingResponse)
+{
+	<Loading />
+}
+else
+{
+	<Overview Bills="_bills"></Overview>
+}

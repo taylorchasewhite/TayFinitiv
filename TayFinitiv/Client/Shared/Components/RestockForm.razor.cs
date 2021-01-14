@@ -14,7 +14,7 @@ namespace TayFinitiv.Client.Shared.Components
 		private RestockRequest _billsToRestock;
 		private bool awaitingResponse;
 		[Inject]
-		private WithdrawalService _withdrawalService { get; set; }
+		private RestockService _restockService { get; set; }
 		protected override void OnInitialized()
 		{
 			base.OnInitialized();
@@ -32,7 +32,7 @@ namespace TayFinitiv.Client.Shared.Components
 		}
 		private async void Save()
 		{
-			_billsNowInATM = await _withdrawalService.Restock(_billsToRestock);
+			_billsNowInATM = await _restockService.Restock(_billsToRestock);
 			StateHasChanged();
 		}
 

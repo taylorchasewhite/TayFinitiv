@@ -11,7 +11,7 @@ namespace TayFinitiv.Client.Pages
 	public partial class OverviewPage
 	{
 		private Dictionary<Denomination, int> _bills;
-
+		private bool awaitingResponse;
 		[Inject]
 		private WithdrawalService _withdrawalService { get; set; }
 
@@ -29,7 +29,9 @@ namespace TayFinitiv.Client.Pages
 
 		private async Task getOverview()
 		{
+			awaitingResponse = true;
 			_bills = await _withdrawalService.GetOverview();
+			awaitingResponse = false;
 			StateHasChanged();
 		}
 	}

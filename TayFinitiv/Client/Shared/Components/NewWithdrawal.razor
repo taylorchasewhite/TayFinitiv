@@ -32,7 +32,10 @@
 		<button class="btn btn-outline-primary" type="button" @onclick="OnCancel" disabled="@awaitingResponse">Restart</button>
 	</div>
 </EditForm>
-
+@if(awaitingResponse)
+{
+	<Loading/>
+}
 @if(requestResponse!=null)
 {
 	<WithdrawRequestResponse Request="requestResponse"/>
