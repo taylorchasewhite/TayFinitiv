@@ -3,27 +3,27 @@
 		<div>
 			@switch(Denomination) {
 				case Denomination.One:
-					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Ones" disabled="@Disabled" />
+					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Ones" disabled="@Disabled" min="0"/>
 					<ValidationMessage For="@(() => BillsToRestock.Ones)" />
 					break;
 				case Denomination.Five:
-					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Fives" disabled="@Disabled"/>
+					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Fives" disabled="@Disabled" min="0"/>
 					<ValidationMessage For="@(() => BillsToRestock.Fives)" />
 					break;
 				case Denomination.Ten:
-					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Tens" disabled="@Disabled"/>
+					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Tens" disabled="@Disabled" min="0"/>
 					<ValidationMessage For="@(() => BillsToRestock.Tens)" />
 					break;
 				case Denomination.Twenty:
-					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Twenties" disabled="@Disabled"/>
+					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Twenties" disabled="@Disabled" min="0"/>
 					<ValidationMessage For="@(() => BillsToRestock.Twenties)" />
 					break;
 				case Denomination.Fifty:
-					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Fifties" disabled="@Disabled"/>
+					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Fifties" disabled="@Disabled" min="0"/>
 					<ValidationMessage For="@(() => BillsToRestock.Fifties)" />
 					break;
 				case Denomination.Hundred:
-					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Hundreds" disabled="@Disabled"/>
+					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Hundreds" disabled="@Disabled" min="0"/>
 					<ValidationMessage For="@(() => BillsToRestock.Hundreds)" />
 					break;
 			}
