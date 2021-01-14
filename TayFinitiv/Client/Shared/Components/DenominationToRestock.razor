@@ -1,0 +1,38 @@
+﻿<div class="form-group col-md-6">
+	<label for="@Label">@Label</label>
+		<div>
+			@switch(Denomination) {
+				case Denomination.One:
+					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Ones" disabled="@Disabled" />
+					break;
+				case Denomination.Five:
+					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Fives" disabled="@Disabled"/>
+					break;
+				case Denomination.Ten:
+					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Tens" disabled="@Disabled"/>
+					break;
+				case Denomination.Twenty:
+					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Twenties" disabled="@Disabled"/>
+					break;
+				case Denomination.Fifty:
+					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Fifties" disabled="@Disabled"/>
+					break;
+				case Denomination.Hundred:
+					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Hundreds" disabled="@Disabled"/>
+					break;
+			}
+		</div>
+</div>
+@code {
+	[Parameter]
+	public string Label { get; set; }
+
+	[Parameter]
+	public bool Disabled { get; set; }
+
+	[CascadingParameter]
+	public RestockRequest BillsToRestock { get; set; }
+
+	[Parameter]
+	public Denomination Denomination { get; set; }
+}

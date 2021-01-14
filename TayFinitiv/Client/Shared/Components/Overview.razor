@@ -1,0 +1,22 @@
+﻿@if (Bills != null)
+{
+	<RecordList Context="pair" TItem="KeyValuePair<Denomination,int>" Items="Bills">
+		<HeadRow>
+			<tr>
+				<th>Denomination (USD)</th>
+				<th>Bill Quantity</th>
+			</tr>
+		</HeadRow>
+		<RowTemplate>
+			<tr>
+				<td>@pair.Key</td>
+				<td>@pair.Value</td>
+			</tr>
+		</RowTemplate>
+	</RecordList>
+}
+
+@code {
+	[Parameter]
+	public Dictionary<Denomination, int> Bills { get; set; }
+}

@@ -1,0 +1,12 @@
+﻿@page "/requests"  
+<h3>Request History</h3>
+<ResetButton OnFactoryReset="OnFactoryReset"></ResetButton>
+@if(_requests !=null)
+{
+	<RecordList Context="request" Items="@_requests" FormatAsList="true">
+		<RowTemplate>
+			<RequestRowDetail Request="request"></RequestRowDetail>
+		</RowTemplate>
+	</RecordList>
+}
+

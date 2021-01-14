@@ -1,0 +1,25 @@
+﻿.card {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  border-top-right-radius: .5rem;
+  border-bottom-right-radius: .5rem;
+  display: flex;
+  flex-direction: column;
+  border-left: 5px solid;
+  padding: .5rem;
+  margin: .5rem;
+  margin-left: 0; }
+  .card.success {
+    border-left-color: #28a745; }
+  .card.failure {
+    border-left-color: #dc3545; }
+  .card .success {
+    color: #155724;
+    font-size: 1.25rem; }
+  .card .failure {
+    color: #721c24;
+    font-size: 1.25rem; }
+
+@media (min-width: 641px) {
+  .secondary-header {
+    text-align: right;
+    padding-right: 1.5rem; } }

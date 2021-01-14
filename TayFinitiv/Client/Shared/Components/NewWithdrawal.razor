@@ -1,0 +1,39 @@
+﻿@page "/requests/new"
+@inherits BasePageComponent 
+<h3>Need some money?!</h3>
+<EditForm Model="@newRequest" OnValidSubmit="OnSave" style="max-width: 50rem;">
+	<div class="form-body">
+		<DataAnnotationsValidator />
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label for="denomination">Bill Denomination</label>
+				<div>
+					<InputSelect id="denomination" class="form-control" @bind-Value="@newRequest.DenominationRequested" disabled="@awaitingResponse">
+						@foreach (Denomination denom in Enum.GetValues(typeof(Denomination)))
+						{
+							<option value="@denom">@denom</option>
+						}
+					</InputSelect>
+					<ValidationMessage For="@(() => newRequest.DenominationRequested)" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label for="notes">Withdrawal Amount ($USD)</label>
+				<div>
+					<InputNumber placeholder="0" id="notes" class="form-control" @bind-Value="@newRequest.AmountRequested" disabled="@awaitingResponse" />
+					<ValidationMessage For="@(() => newRequest.AmountRequested)" />
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-footer">
+		<button class="btn btn-primary" type="submit" disabled="@awaitingResponse">Save</button>
+		<button class="btn btn-outline-primary" type="button" @onclick="OnCancel" disabled="@awaitingResponse">Restart</button>
+	</div>
+</EditForm>
+
+@if(requestResponse!=null)
+{
+	<WithdrawRequestResponse Request="requestResponse"/>
+}

@@ -1,0 +1,22 @@
+﻿@if (Request != null)
+{
+	<div class="@alertClasses" role="alert">
+		@Request.MessageToUser
+	</div>
+}
+
+@code {
+	[Parameter]
+	public WithdrawRequest Request { get; set; }
+
+	private string alertClasses;
+	protected override void OnParametersSet()
+	{
+		base.OnParametersSet();
+		alertClasses = "alert my-2";
+		if(Request!=null)
+		{
+			alertClasses += Request.WasSuccessful ? "alert-success" : "alert-danger";
+		}
+	}
+}

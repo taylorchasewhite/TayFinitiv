@@ -1,0 +1,32 @@
+﻿@if (_billsToRestock != null)
+{
+	
+	<EditForm style="max-width: 50rem;" OnValidSubmit="OnSave" Model="_billsToRestock">
+		<div class="form-body">
+			<DataAnnotationsValidator />
+			<CascadingValue Value="_billsToRestock">
+				<div class="row">
+					<DenominationToRestock Denomination="@Denomination.One" Label="Ones" Disabled="@awaitingResponse" />
+					<DenominationToRestock Denomination="@Denomination.Five" Label="Fives" Disabled="@awaitingResponse" />
+				</div>
+				<div class="row">
+					<DenominationToRestock Denomination="@Denomination.Ten" Label="Tens" Disabled="@awaitingResponse" />
+					<DenominationToRestock Denomination="@Denomination.Twenty" Label="Twenties" Disabled="@awaitingResponse" />
+				</div>
+				<div class="row">
+					<DenominationToRestock Denomination="@Denomination.Fifty" Label="Fifties" Disabled="@awaitingResponse" />
+					<DenominationToRestock Denomination="@Denomination.Hundred" Label="Hundreds" Disabled="@awaitingResponse" />
+				</div>
+			</CascadingValue>
+		</div>
+		<div class="form-footer">
+			<button class="btn btn-primary" type="submit" disabled="@awaitingResponse">Save</button>
+			<button class="btn btn-outline-primary" type="button" @onclick="OnCancel" disabled="@awaitingResponse">Restart</button>
+		</div>
+	</EditForm>
+}
+
+@if(_billsNowInATM!=null)
+{
+	<Overview Bills="_billsNowInATM"/>
+}

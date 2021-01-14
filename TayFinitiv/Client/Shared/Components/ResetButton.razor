@@ -1,0 +1,26 @@
+﻿@using TayFinitiv.Client.Services
+@inject WithdrawalService RequestService
+<button class="btn btn-outline-danger" @onclick="OnResetClick" disabled="@awaitingResponse">Factory Reset ATM</button>
+@code {
+
+	[Parameter]
+	public EventCallback OnFactoryReset { get; set; }
+
+	private bool awaitingResponse;
+	private void OnResetClick()
+	{
+		Reset();
+	}
+
+	private async void Reset()
+	{
+		awaitingResponse = true;
+		await RequestService.FactoryReset();
+		if(OnFactoryReset.HasDelegate)
+		{
+			await OnFactoryReset.InvokeAsync();
+		}
+
+		awaitingResponse = false;
+	}
+}

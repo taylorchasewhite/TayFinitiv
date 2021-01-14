@@ -1,0 +1,32 @@
+﻿@if (Request != null)
+{
+	<li>
+		<div class="@cardClasses">
+			<div class="row">
+				<div class="col-sm-6">@Request.RequestInstant.ToString("g")</div>
+				<div class="col-sm-6 text-muted font-italic small secondary-header">@Request.Id</div>
+			</div>
+			<div class="row">
+				<div class="@string.Concat("col-sm-12 ",contentClass)">@Request.MessageToUser</div>
+			</div>
+		</div>
+	</li>
+}
+
+@code {
+	[Parameter]
+	public WithdrawRequest Request { get; set; }
+
+	private string cardClasses, contentClass;
+	protected override void OnParametersSet()
+	{
+		base.OnParametersSet();
+		cardClasses = "card ";
+		@if(Request!=null)
+		{
+			string successClass = Request.WasSuccessful ? "success" : "failure";
+			cardClasses += successClass;
+			contentClass = successClass;
+		}
+	}
+}
