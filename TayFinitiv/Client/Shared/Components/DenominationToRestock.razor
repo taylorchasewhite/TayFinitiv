@@ -4,21 +4,27 @@
 			@switch(Denomination) {
 				case Denomination.One:
 					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Ones" disabled="@Disabled" />
+					<ValidationMessage For="@(() => BillsToRestock.Ones)" />
 					break;
 				case Denomination.Five:
 					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Fives" disabled="@Disabled"/>
+					<ValidationMessage For="@(() => BillsToRestock.Fives)" />
 					break;
 				case Denomination.Ten:
 					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Tens" disabled="@Disabled"/>
+					<ValidationMessage For="@(() => BillsToRestock.Tens)" />
 					break;
 				case Denomination.Twenty:
 					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Twenties" disabled="@Disabled"/>
+					<ValidationMessage For="@(() => BillsToRestock.Twenties)" />
 					break;
 				case Denomination.Fifty:
 					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Fifties" disabled="@Disabled"/>
+					<ValidationMessage For="@(() => BillsToRestock.Fifties)" />
 					break;
 				case Denomination.Hundred:
 					<InputNumber placeholder="0" id="@Label" class="form-control" @bind-Value="BillsToRestock.Hundreds" disabled="@Disabled"/>
+					<ValidationMessage For="@(() => BillsToRestock.Hundreds)" />
 					break;
 			}
 		</div>
