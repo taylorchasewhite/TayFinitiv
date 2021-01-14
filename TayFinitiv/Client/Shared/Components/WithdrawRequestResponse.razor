@@ -13,7 +13,7 @@
 	protected override void OnParametersSet()
 	{
 		base.OnParametersSet();
-		alertClasses = "alert my-2";
+		alertClasses = "alert my-2 ";
 		if(Request!=null)
 		{
 			alertClasses += Request.WasSuccessful ? "alert-success" : "alert-danger";

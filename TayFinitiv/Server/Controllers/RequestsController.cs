@@ -81,7 +81,7 @@ namespace TayFinitiv.Server.Controllers
         /// number of bills in the ATM.
         /// </summary>
         /// <param name="withdrawRequest">The serialized WithdrawRequest object</param>
-        /// <returns></returns>
+        /// <returns>The request submitted, but with the new Id</returns>
         [HttpPost]
         public async Task<ActionResult<WithdrawRequest>> PostWithdrawRequest(WithdrawRequest withdrawRequest)
         {

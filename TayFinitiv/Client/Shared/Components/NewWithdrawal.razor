@@ -18,9 +18,9 @@
 				</div>
 			</div>
 			<div class="form-group col-md-6">
-				<label for="notes">Withdrawal Amount ($USD)</label>
+				<label for="withdrawalAmount">Withdrawal Amount ($USD)</label>
 				<div>
-					<InputNumber placeholder="0" id="notes" class="form-control" @bind-Value="@newRequest.AmountRequested" disabled="@awaitingResponse" />
+					<InputNumber placeholder="0" id="withdrawalAmount" class="form-control" @bind-Value="@newRequest.AmountRequested" disabled="@awaitingResponse" />
 					<ValidationMessage For="@(() => newRequest.AmountRequested)" />
 
 				</div>

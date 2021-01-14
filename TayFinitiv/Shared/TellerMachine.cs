@@ -68,7 +68,7 @@ namespace TayFinitiv.Shared
 						Fifties -= billsNeeded;
 						break;
 					case Denomination.Hundred:
-						Fifties -= billsNeeded;
+						Hundreds -= billsNeeded;
 						break;
 				}
 				return true;
